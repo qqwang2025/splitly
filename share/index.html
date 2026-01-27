@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Project - Splitly</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8fafc;
+            text-align: center;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            margin-bottom: 24px;
+            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        p {
+            color: #64748b;
+            margin-bottom: 32px;
+            max-width: 300px;
+            line-height: 1.5;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: #0f172a;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: transform 0.1s;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #6366f1;
+            margin-top: 16px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo"></div>
+    <h1>Join Splitly Project</h1>
+    <p>Opening Splitly to join the group...</p>
+
+    <a id="openAppBtn" href="#" class="btn">Open App</a>
+    <a href="https://apps.apple.com/app/splitly/id6739999999" class="btn-secondary" id="downloadLink">Don't have the
+        app? Download</a>
+
+    <script>
+        // 1. Get Project ID from URL
+        const params = new URLSearchParams(window.location.search);
+        const projectId = params.get('join');
+
+        // 2. Construct Deep Link
+        // The scheme must match what is defined in Info.plist (splitly://)
+        // We pass 'join' param same as the App.tsx logic expects
+        const deepLink = `splitly://join?join=${projectId}`;
+
+        // 3. Auto-redirect logic
+        if (projectId) {
+            document.getElementById('openAppBtn').href = deepLink;
+
+            // Attempt to open immediately
+            window.location.href = deepLink;
+
+            // Fallback: If nothing happens after 2.5s, suggest download or stay on page
+            setTimeout(() => {
+                const userChoice = confirm("Did the app open? If not, click OK to download Splitly from the App Store.");
+                if (userChoice) {
+                    // Replace with REAL App Store Link when available
+                    window.location.href = "https://apps.apple.com/app/splitly/id6739999999";
+                }
+            }, 2500);
+        } else {
+            document.querySelector('p').innerText = "Invalid Invite Link";
+            document.getElementById('openAppBtn').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
