@@ -7,7 +7,7 @@
     <title>Join Project - Splitly</title>
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -16,61 +16,103 @@
             margin: 0;
             background-color: #f8fafc;
             text-align: center;
+            color: #0f172a;
         }
 
-        .logo {
-            width: 80px;
-            height: 80px;
-            border-radius: 20px;
-            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-            margin-bottom: 24px;
-            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
+        .logo-container {
+            width: 96px;
+            height: 96px;
+            margin-bottom: 32px;
+            filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.1));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         h1 {
-            font-size: 24px;
+            font-size: 28px;
+            font-weight: 800;
             color: #1e293b;
-            margin-bottom: 8px;
+            margin: 0 0 12px 0;
+            letter-spacing: -0.5px;
         }
 
         p {
             color: #64748b;
-            margin-bottom: 32px;
-            max-width: 300px;
-            line-height: 1.5;
+            margin: 0 0 40px 0;
+            max-width: 320px;
+            line-height: 1.6;
+            font-size: 16px;
         }
 
         .btn {
-            display: inline-block;
-            padding: 14px 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 48px;
             background-color: #0f172a;
             color: white;
             text-decoration: none;
-            border-radius: 12px;
+            border-radius: 16px;
             font-weight: 600;
-            transition: transform 0.1s;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             border: none;
-            font-size: 16px;
+            font-size: 17px;
             cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -1px rgba(15, 23, 42, 0.06);
         }
 
         .btn:active {
-            transform: scale(0.98);
+            transform: scale(0.96);
+            box-shadow: none;
         }
 
         .btn-secondary {
             background-color: transparent;
             color: #6366f1;
-            margin-top: 16px;
-            font-size: 14px;
+            margin-top: 24px;
+            font-size: 15px;
+            font-weight: 500;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .btn-secondary:hover {
+            opacity: 1;
+            text-decoration: underline;
         }
     </style>
 </head>
 
 <body>
-    <div class="logo"></div>
+    <div class="logo-container">
+        <!-- Inlined SVG Logo -->
+        <svg width="100%" height="100%" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="96" height="96" rx="24" fill="#0B172B" />
+            <path
+                d="M40.8635 52.9419C40.8962 51.771 41.8406 50.8311 43.0116 50.8039L60.5574 50.3959C62.5441 50.3497 63.569 52.7527 62.1606 54.1546L44.1249 72.1063C42.7164 73.5082 40.3183 72.4721 40.3738 70.4857L40.8635 52.9419Z"
+                fill="#9DA2AB" />
+            <path
+                d="M55.2788 43.1464C55.2345 44.3168 54.281 45.2474 53.1098 45.2631L35.5607 45.4978C33.5737 45.5243 32.5726 43.1114 33.9948 41.7235L52.2068 23.9507C53.6291 22.5627 56.0169 23.6225 55.9418 25.6083L55.2788 43.1464Z"
+                fill="white" />
+        </svg>
+    </div>
+
     <h1>Join Splitly Project</h1>
-    <p>Opening Splitly to join the group...</p>
+    <p>You've been invited to split expenses.<br>Open the app to join the group.</p>
 
     <a id="openAppBtn" href="#" class="btn">Open App</a>
     <a href="https://apps.apple.com/app/splitly/id6739999999" class="btn-secondary" id="downloadLink">Don't have the
