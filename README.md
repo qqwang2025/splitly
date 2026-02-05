@@ -33,4 +33,4 @@
 ---
 
 > **Splitly - Making group payments simple and fair.**
-> > **Contact - qqwang2025@gmail.com**
+> **Contact - qqwang2025@gmail.com**
